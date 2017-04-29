@@ -1,53 +1,61 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    Navigator
 } from 'react-native';
+import Home from './app/Home';
 
 export default class grubmetapp extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
+    constructor(props) {
+        super(props);
+        this.state = { 
+
+        };
+    }
+    
+    renderScene(route, navigator){
+        switch(route.id){
+            case 'home':
+            return (<Home navigator={navigator} route={route} title="Home Page"/>)
+        }
+    }
+
+    render() {
+        return (
+            <Navigator
+                initialRoute={{id: 'home'}}
+                renderScene={this.renderScene}
+            />
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+
 });
+
+Navigator.prototype.replaceWithAnimation = function (route) {
+    const activeLength = this.state.presentedIndex + 1;
+    const activeStack = this.state.routeStack.slice(0, activeLength);
+    const activeAnimationConfigStack = this.state.sceneConfigStack.slice(0, activeLength);
+    const nextStack = activeStack.concat([route]);
+    const destIndex = nextStack.length - 1;
+    const nextSceneConfig = this.props.configureScene(route, nextStack);
+    const nextAnimationConfigStack = activeAnimationConfigStack.concat([nextSceneConfig]);
+    const replacedStack = activeStack.slice(0, activeLength - 1).concat([route]);
+    this._emitWillFocus(nextStack[destIndex]);
+    this.setState({
+    routeStack: nextStack,
+    sceneConfigStack: nextAnimationConfigStack,
+    }, () => {
+        this._enableScene(destIndex);
+        this._transitionTo(destIndex, nextSceneConfig.defaultTransitionVelocity, null, () => {
+            this.immediatelyResetRouteStack(replacedStack);
+        });
+    });
+};
 
 AppRegistry.registerComponent('grubmetapp', () => grubmetapp);

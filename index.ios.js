@@ -7,6 +7,8 @@ import {
     Navigator
 } from 'react-native';
 import Home from './app/Home';
+import Login from './app/Login';
+import LoginOptions from './app/LoginOptions';
 
 export default class grubmetapp extends Component {
     constructor(props) {
@@ -20,13 +22,17 @@ export default class grubmetapp extends Component {
         switch(route.id){
             case 'home':
             return (<Home navigator={navigator} route={route} title="Home Page"/>)
+            case 'login':
+            return (<Login navigator={navigator} route={route} title="Login Page"/>)
+            case 'loginOptions':
+            return (<LoginOptions navigator={navigator} route={route} title="LoginOptions Page"/>)
         }
     }
 
     render() {
         return (
             <Navigator
-                initialRoute={{id: 'home'}}
+                initialRoute={{id: 'login'}}
                 renderScene={this.renderScene}
             />
         );

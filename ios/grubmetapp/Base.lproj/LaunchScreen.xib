@@ -16,17 +16,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grubmetlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="iZu-Aw-VPi">
-                    <rect key="frame" x="118" y="52" width="250" height="250"/>
+                    <rect key="frame" x="115" y="20" width="250" height="250"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="250" id="Aut-ha-yGn"/>
-                        <constraint firstAttribute="width" constant="250" id="ny9-UZ-uC4"/>
+                        <constraint firstAttribute="width" constant="250" id="B4w-pD-miY"/>
+                        <constraint firstAttribute="height" constant="250" id="v91-RF-eHp"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.23529411764705882" green="0.72549019607843135" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="iZu-Aw-VPi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="118" id="RjI-8i-z0W"/>
-                <constraint firstItem="iZu-Aw-VPi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="52" id="itY-Xq-aRi"/>
+                <constraint firstItem="iZu-Aw-VPi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="UU3-83-QmS"/>
+                <constraint firstItem="iZu-Aw-VPi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="ogt-Le-4hG"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

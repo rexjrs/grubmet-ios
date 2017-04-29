@@ -28,16 +28,16 @@ export default class Home extends Component {
                 renderTabBar={() => <TabBar />}
                 tabBarPosition="bottom"
             >
-                <ScrollView tabLabel="ios-home">
+                <ScrollView tabLabel="ios-home" style={{backgroundColor: "white"}}>
                     <PopUps />
                 </ScrollView>
-                <ScrollView tabLabel="ios-cart">
+                <ScrollView tabLabel="ios-cart" style={{backgroundColor: "white"}}>
                     <Reservations />
                 </ScrollView>
-                <ScrollView tabLabel="ios-wine">
+                <ScrollView tabLabel="ios-wine" style={{backgroundColor: "white"}}>
                     <MyPopUps />
                 </ScrollView>
-                <ScrollView tabLabel="ios-more">
+                <ScrollView tabLabel="ios-more" style={{backgroundColor: "white"}}>
                     <More />
                 </ScrollView>
             </ScrollableTabView>

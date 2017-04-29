@@ -29,9 +29,6 @@ export default class MyPops extends Component {
         return (
             <View>
                 <Header headerTitle={this.state.headerTitle}/>
-                <TouchableOpacity onPress={this.getImage.bind(this)}>
-                    <Text>GetImage</Text>
-                </TouchableOpacity>
             </View>
         )
     }
